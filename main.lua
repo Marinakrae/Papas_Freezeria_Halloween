@@ -7,14 +7,18 @@ function love.conf(t)
     t.screen.height = 700
 end
 
+--sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
+music = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
+--sound:play()
+
 function love.load()
-    fundo = love.graphics.newImage("assets/fundo_menu_rascunho.png")
+    fundo = love.graphics.newImage("assets/images/fundo_menu_rascunho.png")
     --btnPlay = love.graphics.newImage("assets/btnPlay.png")
 end
 
 function love.update(dt)
     if screen == "mainMenu" then
-        -- Update main menu stuff.
+        music:play()
         -- if btnPlayIsPressed() then
         --     screen = "orderStation"
         -- end
