@@ -1,4 +1,5 @@
 local screen = "mainMenu"
+local desenha = true
 
 love.window.setTitle("Papa's Freezeria Edição de Halloween")
 
@@ -14,17 +15,30 @@ musicaMenu:setVolume(0.1) -- 70% do volume
 
 function love.load()
     fundo = love.graphics.newImage("assets/images/fundo_menu_rascunho.png")
-    --btnPlay = love.graphics.newImage("assets/btnPlay.png")
+    fundoPlaceholder = love.graphics.newImage("assets/images/fundo_placeholder.png")
+    btnPlay = love.graphics.newImage("assets/images/Play_button.png")
+    --Posicionamento da imagem do botão para servir como botão. Transformar em função dps se possível
+    btnPlayX = 100
+    btnPlayY = 100
+    btnPlayWidth = btnPlay:getWidth()
+    btnPlayHeight = btnPlay:getHeight()
 end
 
 function love.update(dt)
     if screen == "mainMenu" then
         musicaMenu:play()
-        -- if btnPlayIsPressed() then
-        --     screen = "orderStation"
-        -- end
+        -- Verifica se o mouse está sobre o botão
+        local mouseX, mouseY = love.mouse.getPosition()
+        if mouseX >= btnPlayX and mouseX <= btnPlayX + btnPlayWidth and
+            mouseY >= btnPlayY and mouseY <= btnPlayY + btnPlayHeight then
+            -- O mouse está sobre o botão
+            if love.mouse.isDown(1) then
+                -- O usuário clicou no botão
+                screen = "orderStation"
+                desenha = false
+            end
+        end
     elseif screen == "orderStation" then
-        -- Update in-game stuff.
         -- if playerIsDead() then
         --     screen = "mainmenu"
         -- end
@@ -39,9 +53,11 @@ function love.draw()
         -- Desenha a imagem de fundo na posição (0, 0)
         love.graphics.draw(fundo, 0, 0)
 
-        -- Desenha o botão na posição desejada
-        --love.graphics.draw(btnPlay, 100, 100)
-    elseif screen == "ingame" then
-        -- Draw in-game stuff.
+        if desenha then
+            -- Desenha o botão play na posição desejada
+            love.graphics.draw(btnPlay, 270, 300, 0, 0.5)
+        end
+    elseif screen == "orderStation" then
+        love.graphics.draw(fundoPlaceholder, 0, 0)
     end
 end
