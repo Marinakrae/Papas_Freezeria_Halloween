@@ -8,8 +8,9 @@ function love.conf(t)
 end
 
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
-music = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
 --sound:play()
+musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
+musicaMenu:setVolume(0.1) -- 70% do volume
 
 function love.load()
     fundo = love.graphics.newImage("assets/images/fundo_menu_rascunho.png")
@@ -18,7 +19,7 @@ end
 
 function love.update(dt)
     if screen == "mainMenu" then
-        music:play()
+        musicaMenu:play()
         -- if btnPlayIsPressed() then
         --     screen = "orderStation"
         -- end
