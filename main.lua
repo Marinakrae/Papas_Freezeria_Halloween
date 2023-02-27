@@ -14,6 +14,7 @@ musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para mu
 musicaMenu:setVolume(0.1) -- 70% do volume
 
 function love.load()
+    --Imagens
     fundo = love.graphics.newImage("assets/images/fundo_menu_rascunho.png")
     fundoPlaceholder = love.graphics.newImage("assets/images/fundo_placeholder.png")
     btnPlay = love.graphics.newImage("assets/images/Play_button.png")
@@ -22,6 +23,7 @@ function love.load()
     btnPlayY = 100
     btnPlayWidth = btnPlay:getWidth()
     btnPlayHeight = btnPlay:getHeight()
+    dummy = love.graphics.newImage("assets/images/dummy.jpg")
 end
 
 function love.update(dt)
@@ -59,5 +61,6 @@ function love.draw()
         end
     elseif screen == "orderStation" then
         love.graphics.draw(fundoPlaceholder, 0, 0)
+        love.graphics.draw(dummy, 270, 300, 0, 0.5)
     end
 end
