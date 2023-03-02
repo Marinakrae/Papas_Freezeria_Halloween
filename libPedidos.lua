@@ -14,7 +14,7 @@ local adicional    = math.random(1, 4)
 
 local chantilly    = math.random(1, 5)
 
-function pedidos.array()
+function PedidosArray()
     while sabor1 == sabor2 do
         sabor2 = math.random(1, 6)
     end
@@ -26,9 +26,11 @@ function pedidos.array()
     arrayPedidos[6] = chantilly
 end
 
-function pedidos.exibe(arrayPedidos)
+function PedidosExibe(arrayPedidos)
     i = 1
     for i in values(arrayPedidos) do
-        return arrayPedidos[i];
+        return arrayPedidos[i]
     end
 end
+
+return PedidosExibe
