@@ -122,7 +122,7 @@ function love.draw()
         -- Desenha a imagem de fundo na posição (0, 0)
         love.graphics.draw(fundo, 0, 0)
 
-        love.graphics.print(libPedidos., 100, 100)
+        print(libPedidos.PedidosExibe)
 
         if desenha then
             -- Desenha o botão play na posição desejada
