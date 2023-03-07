@@ -3,7 +3,8 @@
 local screen = "mainMenu"
 local desenha = true
 local tocaMusica = true
-local libPedidos = require "libPedidos"
+--local libPedidos = require "libPedidos"
+
 
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
 --sound:play()
@@ -21,12 +22,12 @@ function love.conf(t)
 end
 
 --Debug
-function love.keypressed(key, u)
-    --Debug
-    if key == "rctrl" then --set to whatever key you want to use
-        debug.debug()
-    end
-end
+-- function love.keypressed(key, u)
+--     --Debug
+--     if key == "rctrl" then --set to whatever key you want to use
+--         debug.debug()
+--     end
+-- end
 
 -- Verifica se o mouse está sobre o botão
 --Passar como parametro as variaveis com os valores do botão em questão
@@ -51,7 +52,7 @@ function love.load()
     --Imagens - ordenadas por ordem de aparição
 
     --Fundos
-    fundo = love.graphics.newImage("assets/images/fundo_menu_rascunho.png")
+    fundo = love.graphics.newImage("assets/images/Tela_inicial_Fundo.png")
     fundoPlaceholder = love.graphics.newImage("assets/images/fundo_placeholder.png")
 
     --Objetos
@@ -120,9 +121,9 @@ function love.draw()
         love.graphics.setBackgroundColor(255, 255, 255)
 
         -- Desenha a imagem de fundo na posição (0, 0)
-        love.graphics.draw(fundo, 0, 0)
+        love.graphics.draw(fundo, 0, 0, 0, 1)
 
-        print(libPedidos.PedidosExibe)
+        --print(libPedidos.PedidosExibe)
 
         if desenha then
             -- Desenha o botão play na posição desejada
