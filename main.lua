@@ -2,8 +2,8 @@
 
 local screen = "mainMenu"
 local desenha = true
+local desenhaVolume = true --true = desenha o vol on, false = desenha o volume off
 local tocaMusica = true
---local libPedidos = require "libPedidos"
 
 
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
@@ -15,19 +15,6 @@ love.window.setTitle("Papa's Freezeria Edição de Halloween")
 
 
 -- Funções
-
-function love.conf(t)
-    t.screen.width = 900
-    t.screen.height = 700
-end
-
---Debug
--- function love.keypressed(key, u)
---     --Debug
---     if key == "rctrl" then --set to whatever key you want to use
---         debug.debug()
---     end
--- end
 
 -- Verifica se o mouse está sobre o botão
 --Passar como parametro as variaveis com os valores do botão em questão
@@ -49,6 +36,9 @@ end
 --Funções padrão
 
 function love.load()
+    --Dimensões da tela
+    love.window.setMode(900, 700)
+
     --Imagens - ordenadas por ordem de aparição
 
     --Fundos
@@ -62,21 +52,21 @@ function love.load()
     --Botões
     --Transformar em função dps se possível os posicionamentos da imagem do botão para servir como botão
     btnPlay = love.graphics.newImage("assets/images/Play_button.png")
-    btnPlayX = 100
-    btnPlayY = 100
+    btnPlayX = 330
+    btnPlayY = 420
     btnPlayWidth = btnPlay:getWidth()
     btnPlayHeight = btnPlay:getHeight()
 
     btnVolumeOn = love.graphics.newImage("assets/images/Volume_icon_on.png")
-    btnVolumeOnX = 700
-    btnVolumeOnY = 500
+    btnVolumeOnX = 800
+    btnVolumeOnY = 600
 
     btnVolumeOnWidth = btnVolumeOn:getWidth()
     btnVolumeOnHeight = btnVolumeOn:getHeight()
 
     btnVolumeOff = love.graphics.newImage("assets/images/Volume_icon_off.png")
-    btnVolumeOffX = 700
-    btnVolumeOffY = 500
+    btnVolumeOffX = 800
+    btnVolumeOffY = 600
     btnVolumeOffWidth = btnVolumeOff:getWidth()
     btnVolumeOffHeight = btnVolumeOff:getHeight()
 end
@@ -94,13 +84,13 @@ function love.update(dt)
         --Testa se clicou no botao de musica off (aí quer ligar)
         if clicou(btnVolumeOffX, btnVolumeOffY, btnVolumeOffHeight, btnVolumeOffWidth) then
             tocaMusica = true
-            love.graphics.draw(btnVolumeOn, btnVolumeOnX, btnVolumeOnY, 0, 0.9)
+            desenhaVolume = true
         end
 
         --Testa se clicou no botao de musica on (aí quer desligar)
         if clicou(btnVolumeOnX, btnVolumeOnY, btnVolumeOnHeight, btnVolumeOnWidth) then
             tocaMusica = false
-            love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
+            desenhaVolume = false
         end
 
         --Testa se clicou em play
@@ -127,9 +117,13 @@ function love.draw()
 
         if desenha then
             -- Desenha o botão play na posição desejada
-            love.graphics.draw(btnPlay, 270, 300, 0, 0.5)
-            love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
-            love.graphics.draw(btnVolumeOn, btnVolumeOnX, btnVolumeOnY, 0, 0.9)
+            love.graphics.draw(btnPlay, 330, 420, 0, 0.5)
+
+            if desenhaVolume then
+                love.graphics.draw(btnVolumeOn, btnVolumeOnX, btnVolumeOnY, 0, 0.9)
+            else
+                love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
+            end
         end
     elseif screen == "orderStation" then
         love.graphics.draw(fundoPlaceholder, 0, 0)
