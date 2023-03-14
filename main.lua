@@ -1,5 +1,3 @@
--- Variáveis locais de controle
-
 local screen = "mainMenu"
 local desenha = true
 local desenhaVolume = true --true = desenha o vol on, false = desenha o volume off
@@ -9,7 +7,7 @@ local tocaMusica = true
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
 --sound:play()
 musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
-musicaMenu:setVolume(0.1) -- 70% do volume
+musicaMenu:setVolume(0.1)                                             -- 70% do volume
 
 love.window.setTitle("Papa's Freezeria Edição de Halloween")
 
@@ -57,10 +55,15 @@ function love.load()
     btnPlayWidth = btnPlay:getWidth()
     btnPlayHeight = btnPlay:getHeight()
 
+    btnVoltar = love.graphics.newImage("assets/images/Back_button.png")
+    btnVoltarX = 130
+    btnVoltarY = 220
+    btnVoltarWidth = btnVoltar:getWidth()
+    btnVoltarHeight = btnVoltar:getHeight()
+
     btnVolumeOn = love.graphics.newImage("assets/images/Volume_icon_on.png")
     btnVolumeOnX = 800
     btnVolumeOnY = 600
-
     btnVolumeOnWidth = btnVolumeOn:getWidth()
     btnVolumeOnHeight = btnVolumeOn:getHeight()
 
@@ -102,6 +105,11 @@ function love.update(dt)
         -- if playerIsDead() then
         --     screen = "mainmenu"
         -- end
+
+        if clicou(btnVoltarX, btnVoltarY, btnVoltarHeight, btnVoltarWidth) then
+            screen = "mainMenu"
+            desenha = true
+        end
     end
 end
 
@@ -128,5 +136,6 @@ function love.draw()
     elseif screen == "orderStation" then
         love.graphics.draw(fundoPlaceholder, 0, 0)
         love.graphics.draw(dummy, 270, 300, 0, 0.5)
+        love.graphics.draw(btnVoltar, 170, 100, 0, 0.5)
     end
 end
