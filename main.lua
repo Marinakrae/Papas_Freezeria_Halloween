@@ -52,14 +52,14 @@ function love.load()
     btnPlay = love.graphics.newImage("assets/images/Play_button.png")
     btnPlayX = 330
     btnPlayY = 420
-    btnPlayWidth = btnPlay:getWidth()
-    btnPlayHeight = btnPlay:getHeight()
+    btnPlayWidth = btnPlay:getWidth() * 0.5
+    btnPlayHeight = btnPlay:getHeight() * 0.5
 
     btnVoltar = love.graphics.newImage("assets/images/Back_button.png")
     btnVoltarX = 130
     btnVoltarY = 220
-    btnVoltarWidth = btnVoltar:getWidth()
-    btnVoltarHeight = btnVoltar:getHeight()
+    btnVoltarWidth = btnVoltar:getWidth() * 0.5
+    btnVoltarHeight = btnVoltar:getHeight() * 0.5
 
     btnVolumeOn = love.graphics.newImage("assets/images/Volume_icon_on.png")
     btnVolumeOnX = 800
@@ -98,8 +98,8 @@ function love.update(dt)
 
         --Testa se clicou em play
         if clicou(btnPlayX, btnPlayY, btnPlayHeight, btnPlayWidth) then
-            desenha = false
             screen = "orderStation"
+            desenha = true -- mover essa linha para dentro do if
         end
     elseif screen == "orderStation" then
         -- if playerIsDead() then
