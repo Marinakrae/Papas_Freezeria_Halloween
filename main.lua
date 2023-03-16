@@ -1,6 +1,5 @@
 local screen = "mainMenu"
 local desenha = true
-local desenhaVolume = true --true = desenha o vol on, false = desenha o volume off
 local tocaMusica = true
 
 
@@ -62,14 +61,14 @@ function love.load()
     btnVoltarHeight = btnVoltar:getHeight() * 0.5
 
     btnVolumeOn = love.graphics.newImage("assets/images/Volume_icon_on.png")
-    btnVolumeOnX = 800
-    btnVolumeOnY = 600
+    btnVolumeOnX = 810
+    btnVolumeOnY = 590
     btnVolumeOnWidth = btnVolumeOn:getWidth()
     btnVolumeOnHeight = btnVolumeOn:getHeight()
 
     btnVolumeOff = love.graphics.newImage("assets/images/Volume_icon_off.png")
-    btnVolumeOffX = 800
-    btnVolumeOffY = 600
+    btnVolumeOffX = 750
+    btnVolumeOffY = 590
     btnVolumeOffWidth = btnVolumeOff:getWidth()
     btnVolumeOffHeight = btnVolumeOff:getHeight()
 end
@@ -86,14 +85,12 @@ function love.update(dt)
         --Testa se clicou no botão de volume
         --Testa se clicou no botao de musica off (aí quer ligar)
         if clicou(btnVolumeOffX, btnVolumeOffY, btnVolumeOffHeight, btnVolumeOffWidth) then
-            tocaMusica = true
-            desenhaVolume = true
+            tocaMusica = false
         end
 
         --Testa se clicou no botao de musica on (aí quer desligar)
         if clicou(btnVolumeOnX, btnVolumeOnY, btnVolumeOnHeight, btnVolumeOnWidth) then
-            tocaMusica = false
-            desenhaVolume = false
+            tocaMusica = true
         end
 
         --Testa se clicou em play
@@ -127,11 +124,9 @@ function love.draw()
             -- Desenha o botão play na posição desejada
             love.graphics.draw(btnPlay, 330, 420, 0, 0.5)
 
-            if desenhaVolume then
-                love.graphics.draw(btnVolumeOn, btnVolumeOnX, btnVolumeOnY, 0, 0.9)
-            else
-                love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
-            end
+            love.graphics.draw(btnVolumeOn, btnVolumeOnX, btnVolumeOnY, 0, 0.9)
+
+            love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
         end
     elseif screen == "orderStation" then
         love.graphics.draw(fundoPlaceholder, 0, 0)
