@@ -68,6 +68,8 @@
 
 <h2 align="left">🕯️Créditos:🕯️</h2>
 
+<p align="center"> README by Sofia :> <\p>
+
 <p align="center"> 
     🎃 Música do menu inicial by:
     <a href="https://pixabay.com/users/geoffharvey-9096471/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=122118%22%3E"> geoffharvey </a> from <a href="https://pixabay.com//?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=music&amp;utm_content=122118%22%3E"> Pixabay </a>
