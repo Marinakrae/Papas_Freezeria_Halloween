@@ -64,7 +64,7 @@ function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
 
         if (granulado == 1) then
             granulado = " Dentes"
-        elseif (grandulado == 2) then
+        elseif (granulado == 2) then
             granulado = " Pelos"
         elseif (granulado == 3) then
             granulado = " Cinzas"
@@ -104,6 +104,7 @@ end
 local screen = "mainMenu"
 local desenha = true
 local tocaMusica = true
+local xDummy
 
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
 --sound:play()
@@ -132,6 +133,12 @@ function clicou(btnX, btnY, btnHeight, btnWidth)
     end
 end
 
+--AtualizarCliente
+function atualizarImagemCliente(dt)
+    local delta = 100 -- ajuste a velocidade da animação alterando este valor
+    xDummy = xDummy + delta * dt
+end
+
 --Funções padrão
 
 function love.load()
@@ -147,8 +154,6 @@ function love.load()
     --Objetos
     dummy = love.graphics.newImage("assets/images/dummy.png")
     --Itens do pedido
-
-
 
     --Botões
     --Transformar em função dps se possível os posicionamentos da imagem do botão para servir como botão
@@ -203,14 +208,12 @@ function love.update(dt)
             desenha = true -- mover essa linha para dentro do if
         end
     elseif screen == "orderStation" then
-        -- if playerIsDead() then
-        --     screen = "mainmenu"
-        -- end
-
         if clicou(btnVoltarX, btnVoltarY, btnVoltarHeight, btnVoltarWidth) then
             screen = "mainMenu"
             desenha = true
         end
+        --Dummy se movendo
+        atualizarImagemCliente(dt)
     end
 end
 
@@ -231,8 +234,10 @@ function love.draw()
             love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
         end
     elseif screen == "orderStation" then
+        xDummy = 1070
+
         love.graphics.draw(fundoPlaceholder, 0, 0)
-        love.graphics.draw(dummy, 370, 300, 0, 0.3)
+        love.graphics.draw(dummy, xDummy, 300, 0, 0.3)
         love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
         love.graphics.print(PedidosArray(math.random(1, 6), math.random(1, 6), math.random(1, 5), math.random(1, 4),
             math.random(1, 4), math.random(1, 5)))
