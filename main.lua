@@ -2,7 +2,6 @@ local screen = "mainMenu"
 local desenha = true
 local tocaMusica = true
 
-
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
 --sound:play()
 musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
@@ -15,6 +14,109 @@ love.window.setTitle("Papa's Freezeria Edição de Halloween")
 
 -- Verifica se o mouse está sobre o botão
 --Passar como parametro as variaveis com os valores do botão em questão
+local pedidos      = {}
+
+local arrayPedidos = {}
+
+local sabor1
+
+local sabor2
+
+local calda
+
+local granulado
+
+local adicional
+
+local chantilly
+
+local i = 0
+
+function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
+    
+    if i == 0 then
+        while sabor1 == sabor2 do
+            sabor2 = math.random(1, 6)
+        end
+        if(sabor1 == 1) then
+            sabor1 = "Aranha"
+        elseif (sabor1 == 2) then
+            sabor1 = " Olho"
+        elseif (sabor1 == 3) then
+            sabor1 = " Cérebro"
+        elseif (sabor1 == 4) then
+            sabor1 = " Ratos Mortos"
+        elseif (sabor1 == 5) then
+            sabor1 = " Carne podre"
+        elseif (sabor1 == 6) then
+            sabor1 = " Abóbora"
+        end
+
+        if(sabor2 == 1) then
+            sabor2 = " Aranha"
+        elseif (sabor2 == 2) then
+            sabor2 = " Olho"
+        elseif (sabor2 == 3) then
+            sabor2 = " Cérebro"
+        elseif (sabor2 == 4) then
+            sabor2 = " Ratos Mortos"
+        elseif (sabor2 == 5) then
+            sabor2 = " Carne podre"
+        elseif (sabor2 == 6) then
+            sabor2 = " Abóbora"
+        end
+
+        if (calda == 1) then
+            calda = " Sangue"
+        elseif (calda == 2) then
+            calda = " Gosma verde"
+        elseif (calda == 3) then
+            calda = " Veneno"
+        elseif (calda == 4) then
+            calda = " Agua de esgoto"
+        elseif (calda == 5) then
+            calda = " Baba"
+        end
+
+        if (granulado == 1) then
+            granulado = " Dentes"
+        elseif (grandulado == 2) then
+            granulado = " Pelos"
+        elseif (granulado == 3) then
+            granulado = " Cinzas"
+        elseif (granulado == 4) then
+            granulado = " Unhas"
+        end
+
+        if (adicional == 1) then 
+            adicional = " Ossos"
+        elseif (adicional == 2) then
+            adicional = " Teia de Aranha"
+        elseif (adicional == 3) then
+            adicional = " Dedos"
+        elseif (adicional == 4) then
+            adicional = " Mini abóbora"
+        end
+
+        if (chantilly == 1) then
+            chantilly = " Preto"
+        elseif (chantilly == 2) then
+            chantilly = " Verde"
+        elseif (chantilly == 3) then
+            chantilly = " Vermelho"
+        elseif (chantilly == 4) then
+            chantilly = " Laranja"
+        elseif (chantilly == 5) then
+            chantilly = " Branco"
+        end
+        arrayPedidos = {sabor1, sabor2, calda, granulado, adicional, chantilly}
+        i = 1
+    end
+    return arrayPedidos
+end
+
+
+
 function clicou(btnX, btnY, btnHeight, btnWidth)
     local mouseX, mouseY = love.mouse.getPosition()
 
@@ -118,7 +220,7 @@ function love.draw()
         -- Desenha a imagem de fundo na posição (0, 0)
         love.graphics.draw(fundo, 0, 0, 0, 1)
 
-        --print(libPedidos.PedidosExibe)
+        love.graphics.print(PedidosArray(math.random(1, 6),math.random(1, 6),math.random(1, 5),math.random(1, 4),math.random(1, 4),math.random(1, 5)))
 
         if desenha then
             -- Desenha o botão play na posição desejada
