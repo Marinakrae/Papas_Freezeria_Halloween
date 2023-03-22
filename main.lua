@@ -1,19 +1,4 @@
-local screen = "mainMenu"
-local desenha = true
-local tocaMusica = true
-
---sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
---sound:play()
-musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
-musicaMenu:setVolume(0.1)                                             -- 70% do volume
-
-love.window.setTitle("Papa's Freezeria Edição de Halloween")
-
-
--- Funções
-
--- Verifica se o mouse está sobre o botão
---Passar como parametro as variaveis com os valores do botão em questão
+--Lib PedidosArray
 local pedidos      = {}
 
 local arrayPedidos = {}
@@ -30,15 +15,14 @@ local adicional
 
 local chantilly
 
-local i = 0
+local i            = 0
 
 function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
-    
     if i == 0 then
         while sabor1 == sabor2 do
             sabor2 = math.random(1, 6)
         end
-        if(sabor1 == 1) then
+        if (sabor1 == 1) then
             sabor1 = "Aranha"
         elseif (sabor1 == 2) then
             sabor1 = " Olho"
@@ -52,7 +36,7 @@ function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
             sabor1 = " Abóbora"
         end
 
-        if(sabor2 == 1) then
+        if (sabor2 == 1) then
             sabor2 = " Aranha"
         elseif (sabor2 == 2) then
             sabor2 = " Olho"
@@ -88,7 +72,7 @@ function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
             granulado = " Unhas"
         end
 
-        if (adicional == 1) then 
+        if (adicional == 1) then
             adicional = " Ossos"
         elseif (adicional == 2) then
             adicional = " Teia de Aranha"
@@ -109,14 +93,30 @@ function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
         elseif (chantilly == 5) then
             chantilly = " Branco"
         end
-        arrayPedidos = {sabor1, sabor2, calda, granulado, adicional, chantilly}
+        arrayPedidos = { sabor1, sabor2, calda, granulado, adicional, chantilly }
         i = 1
     end
     return arrayPedidos
 end
 
+----
+
+local screen = "mainMenu"
+local desenha = true
+local tocaMusica = true
+
+--sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
+--sound:play()
+musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para musicas
+musicaMenu:setVolume(0.1)                                             -- 70% do volume
+
+love.window.setTitle("Papa's Freezeria Edição de Halloween")
 
 
+-- Funções
+
+-- Verifica se o mouse está sobre o botão
+--Passar como parametro as variaveis com os valores do botão em questão
 function clicou(btnX, btnY, btnHeight, btnWidth)
     local mouseX, mouseY = love.mouse.getPosition()
 
@@ -146,6 +146,8 @@ function love.load()
 
     --Objetos
     dummy = love.graphics.newImage("assets/images/dummy.png")
+    --Itens do pedido
+
 
 
     --Botões
@@ -220,8 +222,6 @@ function love.draw()
         -- Desenha a imagem de fundo na posição (0, 0)
         love.graphics.draw(fundo, 0, 0, 0, 1)
 
-        love.graphics.print(PedidosArray(math.random(1, 6),math.random(1, 6),math.random(1, 5),math.random(1, 4),math.random(1, 4),math.random(1, 5)))
-
         if desenha then
             -- Desenha o botão play na posição desejada
             love.graphics.draw(btnPlay, 330, 420, 0, 0.5)
@@ -234,5 +234,7 @@ function love.draw()
         love.graphics.draw(fundoPlaceholder, 0, 0)
         love.graphics.draw(dummy, 370, 300, 0, 0.3)
         love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
+        love.graphics.print(PedidosArray(math.random(1, 6), math.random(1, 6), math.random(1, 5), math.random(1, 4),
+            math.random(1, 4), math.random(1, 5)))
     end
 end
