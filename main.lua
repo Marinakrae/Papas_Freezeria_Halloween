@@ -130,7 +130,7 @@ function love.draw()
         end
     elseif screen == "orderStation" then
         love.graphics.draw(fundoPlaceholder, 0, 0)
-        love.graphics.draw(dummy, 270, 300, 0, 0.5)
+        love.graphics.draw(dummy, 370, 300, 0, 0.3)
         love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
     end
 end
