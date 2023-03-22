@@ -55,10 +55,10 @@ function love.load()
     btnPlayHeight = btnPlay:getHeight() * 0.5
 
     btnVoltar = love.graphics.newImage("assets/images/Back_button.png")
-    btnVoltarX = 130
-    btnVoltarY = 220
-    btnVoltarWidth = btnVoltar:getWidth() * 0.5
-    btnVoltarHeight = btnVoltar:getHeight() * 0.5
+    btnVoltarX = -70
+    btnVoltarY = -70
+    btnVoltarWidth = btnVoltar:getWidth() * 0.3
+    btnVoltarHeight = btnVoltar:getHeight() * 0.3
 
     btnVolumeOn = love.graphics.newImage("assets/images/Volume_icon_on.png")
     btnVolumeOnX = 810
@@ -131,6 +131,6 @@ function love.draw()
     elseif screen == "orderStation" then
         love.graphics.draw(fundoPlaceholder, 0, 0)
         love.graphics.draw(dummy, 270, 300, 0, 0.5)
-        love.graphics.draw(btnVoltar, 170, 100, 0, 0.5)
+        love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
     end
 end
