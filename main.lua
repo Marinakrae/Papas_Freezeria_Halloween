@@ -104,7 +104,7 @@ end
 local screen = "mainMenu"
 local desenha = true
 local tocaMusica = true
-local xDummy
+local xDummy = 1000
 
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
 --sound:play()
@@ -153,6 +153,7 @@ function love.load()
 
     --Objetos
     dummy = love.graphics.newImage("assets/images/dummy.png")
+    xDummy = 1000
     --Itens do pedido
 
     --Botões
