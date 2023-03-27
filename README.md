@@ -38,7 +38,7 @@
 
 <h3 align="left">Marina (●'◡'●)</h3>
 <a href="https://github.com/Marinakrae">
-    <img alt="Mari img" src="https://media.tenor.com/epvkxwocGuQAAAAC/susz-sus.gif" height="200"/>
+    <img alt="Mari img" src="https://media.tenor.com/6S9pADo1CDwAAAAC/kerokeropi-frog.gif" height="200"/>
 </a>
 <p align="left">
     💜
@@ -66,6 +66,8 @@
     💜
 </p>
 
+<h3 align="center"> Obs: Para acessar o perfil no Git de cada um dos autores, clique nas imagens correspondentes a cada autor do projeto!⭐</h3>
+
 <h2 align="left">🕯️Créditos:🕯️</h2>
 
 <p align="center"> 
@@ -74,4 +76,3 @@
     <br>
     👻 README by Sofia
 </p>
-
