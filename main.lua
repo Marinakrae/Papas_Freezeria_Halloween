@@ -104,7 +104,7 @@ end
 local screen = "mainMenu"
 local desenha = true
 local tocaMusica = true
-local xDummy = 1000
+local xDummy = 100
 
 --sound = love.audio.newSource("pling.wav", "static") -- para efeitos sonoros
 --sound:play()
@@ -112,7 +112,6 @@ musicaMenu = love.audio.newSource("assets/sounds/menu.mp3", "stream") -- para mu
 musicaMenu:setVolume(0.1)                                             -- 70% do volume
 
 love.window.setTitle("Papa's Freezeria Edição de Halloween")
-
 
 -- Funções
 
@@ -135,8 +134,10 @@ end
 
 --AtualizarCliente
 function atualizarImagemCliente(dt)
-    local delta = 100 -- ajuste a velocidade da animação alterando este valor
-    xDummy = xDummy + delta * dt
+    if xDummy >= 200 then
+        local delta = 100 -- ajuste a velocidade da animação alterando este valor
+        xDummy = xDummy + delta * -dt
+    end
 end
 
 --Funções padrão
@@ -150,10 +151,11 @@ function love.load()
     --Fundos
     fundo = love.graphics.newImage("assets/images/Tela_inicial_Fundo.png")
     fundoPlaceholder = love.graphics.newImage("assets/images/fundo_placeholder.png")
+    takeOrderPlaceHolder = love.graphics.newImage("assets/images/orderTake_placeholder.png")
 
     --Objetos
     dummy = love.graphics.newImage("assets/images/dummy.png")
-    xDummy = 1000
+
     --Itens do pedido
 
     --Botões
@@ -181,6 +183,12 @@ function love.load()
     btnVolumeOffY = 590
     btnVolumeOffWidth = btnVolumeOff:getWidth()
     btnVolumeOffHeight = btnVolumeOff:getHeight()
+
+    btnPedido = love.graphics.newImage("assets/images/pegar_pedido.png")
+    btnPedidoX = 100
+    btnPedidoY = 200
+    btnPedidoWidth = btnPedido:getWidth()
+    btnPedidoHeight = btnPedido:getHeight()
 end
 
 function love.update(dt)
@@ -207,6 +215,7 @@ function love.update(dt)
         if clicou(btnPlayX, btnPlayY, btnPlayHeight, btnPlayWidth) then
             screen = "orderStation"
             desenha = true -- mover essa linha para dentro do if
+            xDummy = 1000
         end
     elseif screen == "orderStation" then
         if clicou(btnVoltarX, btnVoltarY, btnVoltarHeight, btnVoltarWidth) then
@@ -215,6 +224,11 @@ function love.update(dt)
         end
         --Dummy se movendo
         atualizarImagemCliente(dt)
+
+        if clicou(btnPedidoX, btnPedidoY, btnPedidoHeight, btnPedidoWidth) then
+            screen = "takeOrder"
+            desenha = true
+        end
     end
 end
 
@@ -235,12 +249,12 @@ function love.draw()
             love.graphics.draw(btnVolumeOff, btnVolumeOffX, btnVolumeOffY, 0, 0.9)
         end
     elseif screen == "orderStation" then
-        xDummy = 1070
-
         love.graphics.draw(fundoPlaceholder, 0, 0)
         love.graphics.draw(dummy, xDummy, 300, 0, 0.3)
         love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
         love.graphics.print(PedidosArray(math.random(1, 6), math.random(1, 6), math.random(1, 5), math.random(1, 4),
             math.random(1, 4), math.random(1, 5)))
+    elseif screen == "takeOrder" then
+        love.graphics.draw(takeOrderPlaceHolder, 0, 0)
     end
 end
