@@ -136,7 +136,7 @@ end
 function atualizarImagemCliente(dt)
     if xDummy >= 200 then
         local delta = 100 -- ajuste a velocidade da animação alterando este valor
-        xDummy = xDummy + delta * -dt
+        xDummy = xDummy + delta * (-dt * 2)
     end
 end
 
@@ -185,8 +185,8 @@ function love.load()
     btnVolumeOffHeight = btnVolumeOff:getHeight()
 
     btnPedido = love.graphics.newImage("assets/images/pegar_pedido.png")
-    btnPedidoX = 100
-    btnPedidoY = 200
+    btnPedidoX = -50
+    btnPedidoY = -100
     btnPedidoWidth = btnPedido:getWidth()
     btnPedidoHeight = btnPedido:getHeight()
 end
@@ -254,6 +254,9 @@ function love.draw()
         love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
         love.graphics.print(PedidosArray(math.random(1, 6), math.random(1, 6), math.random(1, 5), math.random(1, 4),
             math.random(1, 4), math.random(1, 5)))
+        if xDummy == 200 then
+            love.graphics.draw(btnPedido, -50, -100, 0, 0.5)
+        end
     elseif screen == "takeOrder" then
         love.graphics.draw(takeOrderPlaceHolder, 0, 0)
     end
