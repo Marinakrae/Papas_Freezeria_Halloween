@@ -3,6 +3,8 @@ local pedidos      = {}
 
 local arrayPedidos = {}
 
+local arrayPedidosTela = {}
+
 local sabor1
 
 local sabor2
@@ -15,7 +17,7 @@ local adicional
 
 local chantilly
 
-local i            = 0
+local i = 0
 
 function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
     if i == 0 then
@@ -25,73 +27,73 @@ function PedidosArray(sabor1, sabor2, calda, granulado, adicional, chantilly)
         if (sabor1 == 1) then
             sabor1 = "Aranha"
         elseif (sabor1 == 2) then
-            sabor1 = " Olho"
+            sabor1 = "Olho"
         elseif (sabor1 == 3) then
-            sabor1 = " Cérebro"
+            sabor1 = "Cérebro"
         elseif (sabor1 == 4) then
-            sabor1 = " Ratos Mortos"
+            sabor1 = "Ratos Mortos"
         elseif (sabor1 == 5) then
-            sabor1 = " Carne podre"
+            sabor1 = "Carne podre"
         elseif (sabor1 == 6) then
-            sabor1 = " Abóbora"
+            sabor1 = "Abóbora"
         end
 
         if (sabor2 == 1) then
-            sabor2 = " Aranha"
+            sabor2 = "Aranha"
         elseif (sabor2 == 2) then
-            sabor2 = " Olho"
+            sabor2 = "Olho"
         elseif (sabor2 == 3) then
-            sabor2 = " Cérebro"
+            sabor2 = "Cérebro"
         elseif (sabor2 == 4) then
-            sabor2 = " Ratos Mortos"
+            sabor2 = "Ratos Mortos"
         elseif (sabor2 == 5) then
-            sabor2 = " Carne podre"
+            sabor2 = "Carne podre"
         elseif (sabor2 == 6) then
-            sabor2 = " Abóbora"
+            sabor2 = "Abóbora"
         end
 
         if (calda == 1) then
-            calda = " Sangue"
+            calda = "Sangue"
         elseif (calda == 2) then
-            calda = " Gosma verde"
+            calda = "Gosma verde"
         elseif (calda == 3) then
-            calda = " Veneno"
+            calda = "Veneno"
         elseif (calda == 4) then
-            calda = " Agua de esgoto"
+            calda = "Agua de esgoto"
         elseif (calda == 5) then
-            calda = " Baba"
+            calda = "Baba"
         end
 
         if (granulado == 1) then
-            granulado = " Dentes"
+            granulado = "Dentes"
         elseif (granulado == 2) then
-            granulado = " Pelos"
+            granulado = "Pelos"
         elseif (granulado == 3) then
-            granulado = " Cinzas"
+            granulado = "Cinzas"
         elseif (granulado == 4) then
-            granulado = " Unhas"
+            granulado = "Unhas"
         end
 
         if (adicional == 1) then
-            adicional = " Ossos"
+            adicional = "Ossos"
         elseif (adicional == 2) then
-            adicional = " Teia de Aranha"
+            adicional = "Teia de Aranha"
         elseif (adicional == 3) then
-            adicional = " Dedos"
+            adicional = "Dedos"
         elseif (adicional == 4) then
-            adicional = " Mini abóbora"
+            adicional = "Mini abóbora"
         end
 
         if (chantilly == 1) then
-            chantilly = " Preto"
+            chantilly = "Preto"
         elseif (chantilly == 2) then
-            chantilly = " Verde"
+            chantilly = "Verde"
         elseif (chantilly == 3) then
-            chantilly = " Vermelho"
+            chantilly = "Vermelho"
         elseif (chantilly == 4) then
-            chantilly = " Laranja"
+            chantilly = "Laranja"
         elseif (chantilly == 5) then
-            chantilly = " Branco"
+            chantilly = "Branco"
         end
         arrayPedidos = { sabor1, sabor2, calda, granulado, adicional, chantilly }
         i = 1
@@ -157,6 +159,7 @@ function love.load()
     dummy = love.graphics.newImage("assets/images/dummy.png")
 
     --Itens do pedido
+    aranha = love.graphics.newImage("assets/images/minha_banana.png")
 
     --Botões
     --Transformar em função dps se possível os posicionamentos da imagem do botão para servir como botão
@@ -252,12 +255,82 @@ function love.draw()
         love.graphics.draw(fundoPlaceholder, 0, 0)
         love.graphics.draw(dummy, xDummy, 300, 0, 0.3)
         love.graphics.draw(btnVoltar, -70, -70, 0, 0.5)
-        love.graphics.print(PedidosArray(math.random(1, 6), math.random(1, 6), math.random(1, 5), math.random(1, 4),
-            math.random(1, 4), math.random(1, 5)))
+        arrayPedidos = PedidosArray(math.random(1, 6), math.random(1, 6), math.random(1, 5), math.random(1, 4),
+            math.random(1, 4), math.random(1, 5))
+
+        love.graphics.print(xDummy)
         if xDummy == 200 then
-            love.graphics.draw(btnPedido, -50, -100, 0, 0.5)
+            love.graphics.draw(btnPedido, 0, 100, 0, 0.5)
         end
     elseif screen == "takeOrder" then
-        love.graphics.draw(takeOrderPlaceHolder, 0, 0)
+        love.graphics.draw(takeOrderPlaceHolder, 0, 100)
+        if(arrayPedidos[1] == "Aranha") then
+            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+        elseif(arrayPedidos[1] == "Olho") then
+            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+        elseif(arrayPedidos[1] == "Cérebro") then
+            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+        elseif(arrayPedidos[1] == "Ratos Mortos") then
+            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+        elseif(arrayPedidos[1] == "Carne podre") then
+            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+        elseif(arrayPedidos[1] == "Abóbora") then
+            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+        end
+        
+        if(arrayPedidos[2] == "Aranha") then
+            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+        elseif(arrayPedidos[2] == "Olho") then
+            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+        elseif(arrayPedidos[2] == "Cérebro") then
+            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+        elseif(arrayPedidos[2] == "Ratos Mortos") then
+            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+        elseif(arrayPedidos[2] == "Carne podre") then
+            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+        elseif(arrayPedidos[2] == "Abóbora") then
+            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+        end
+        if(arrayPedidos[3] == "Sangue") then
+            love.graphics.draw(aranha, 650, 300, 0, 0.33)
+        elseif(arrayPedidos[3] == "Gosma verde") then
+            love.graphics.draw(aranha, 650, 300, 0, 0.33)
+        elseif(arrayPedidos[3] == "Veneno") then
+            love.graphics.draw(aranha, 650, 300, 0, 0.33)
+        elseif(arrayPedidos[3] == "Agua de esgoto") then
+            love.graphics.draw(aranha, 650, 300, 0, 0.33)
+        elseif(arrayPedidos[3] == "Baba") then
+            love.graphics.draw(aranha, 650, 300, 0, 0.33)
+        end
+        if(arrayPedidos[4] == "Dentes") then
+            love.graphics.draw(aranha, 650, 200, 0, 0.33)
+        elseif(arrayPedidos[4] == "Pelos") then
+            love.graphics.draw(aranha, 650, 200, 0, 0.33)
+        elseif(arrayPedidos[4] == "Cinzas") then
+            love.graphics.draw(aranha, 650, 200, 0, 0.33)
+        elseif(arrayPedidos[4] == "Unhas") then
+            love.graphics.draw(aranha, 650, 200, 0, 0.33)
+        end
+        if(arrayPedidos[5] == "Ossos") then
+            love.graphics.draw(aranha, 650, 100, 0, 0.33)
+        elseif(arrayPedidos[5] == "Teia de Aranha") then
+            love.graphics.draw(aranha, 650, 100, 0, 0.33)
+        elseif(arrayPedidos[5] == "Dedos") then
+            love.graphics.draw(aranha, 650, 100, 0, 0.33)
+        elseif(arrayPedidos[5] == "Mini abóbora") then
+            love.graphics.draw(aranha, 650, 100, 0, 0.33)
+        end
+
+        if(arrayPedidos[6] == "Preto") then
+            love.graphics.draw(aranha, 750, 100, 0, 0.33)
+        elseif(arrayPedidos[6] == "Verde") then
+            love.graphics.draw(aranha, 750, 100, 0, 0.33)
+        elseif(arrayPedidos[6] == "Vermelho") then
+            love.graphics.draw(aranha, 750, 100, 0, 0.33)
+        elseif(arrayPedidos[6] == "Laranja") then
+            love.graphics.draw(aranha, 750, 100, 0, 0.33)
+        elseif(arrayPedidos[6] == "Branco") then
+            love.graphics.draw(aranha, 750, 100, 0, 0.33)
+        end
     end
 end
