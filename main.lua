@@ -159,7 +159,11 @@ function love.load()
     dummy = love.graphics.newImage("assets/images/dummy.png")
 
     --Itens do pedido
-    aranha = love.graphics.newImage("assets/images/minha_banana.png")
+    aranha = love.graphics.newImage("assets/images/aranha.png")
+    carnePodre = love.graphics.newImage("assets/images/carnePodre.png")
+    olho = love.graphics.newImage("assets/images/olho.png")
+    cerebro = love.graphics.newImage("assets/images/cerebro.png")
+    abobora = love.graphics.newImage("assets/images/abobora.png")
 
     --Botões
     --Transformar em função dps se possível os posicionamentos da imagem do botão para servir como botão
@@ -265,31 +269,31 @@ function love.draw()
     elseif screen == "takeOrder" then
         love.graphics.draw(takeOrderPlaceHolder, 0, 100)
         if(arrayPedidos[1] == "Aranha") then
-            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+            love.graphics.draw(aranha, 645, 430, 0, 0.33)
         elseif(arrayPedidos[1] == "Olho") then
-            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+            love.graphics.draw(olho, 645, 430, 0, 0.33)
         elseif(arrayPedidos[1] == "Cérebro") then
-            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+            love.graphics.draw(cerebro, 645, 430, 0, 0.33)
         elseif(arrayPedidos[1] == "Ratos Mortos") then
-            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+            love.graphics.draw(rato, 645, 430, 0, 0.33)
         elseif(arrayPedidos[1] == "Carne podre") then
-            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+            love.graphics.draw(carnePodre, 645, 430, 0, 0.33)
         elseif(arrayPedidos[1] == "Abóbora") then
-            love.graphics.draw(aranha, 625, 400, 0, 0.33)
+            love.graphics.draw(abobora, 645, 430, 0, 0.33)
         end
         
         if(arrayPedidos[2] == "Aranha") then
-            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+            love.graphics.draw(aranha, 755, 430, 0, 0.33)
         elseif(arrayPedidos[2] == "Olho") then
-            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+            love.graphics.draw(olho, 755, 430, 0, 0.33)
         elseif(arrayPedidos[2] == "Cérebro") then
-            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+            love.graphics.draw(cerebro, 755, 430, 0, 0.33)
         elseif(arrayPedidos[2] == "Ratos Mortos") then
-            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+            love.graphics.draw(rato, 755, 430, 0, 0.33)
         elseif(arrayPedidos[2] == "Carne podre") then
-            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+            love.graphics.draw(carnePodre, 755, 430, 0, 0.33)
         elseif(arrayPedidos[2] == "Abóbora") then
-            love.graphics.draw(aranha, 725, 400, 0, 0.33)
+            love.graphics.draw(abobora, 755, 430, 0, 0.33)
         end
         if(arrayPedidos[3] == "Sangue") then
             love.graphics.draw(aranha, 650, 300, 0, 0.33)
