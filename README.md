@@ -46,16 +46,6 @@
     💜
 </p>
 
-<h3 align="left">Robert ╰(*°▽°*)╯</h3>
-<a href="https://github.com/Robert-dvk">
-    <img alt="Robert img" src="https://media.tenor.com/HA61HwAtP8wAAAAC/pochacco-sanrio.gif" height="200"/>
-</a>
-<p align="left">
-    💜
-    ⚰️
-    💜
-</p>
-
 <h3 align="left">Sofia (❁´◡`❁)</h3>
 <a href="https://github.com/sofia-krae">
     <img alt="Sofi img" src="https://media.tenor.com/RSUq8agBH0EAAAAC/kawaii-cinnamoroll.gif" height="200"/>
